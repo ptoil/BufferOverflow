@@ -1,6 +1,8 @@
+import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
-public class Memory {
+public
+class Memory {
 	
 	private char[] memArray;
 	private final char MEMORY_SIZE = 200;
@@ -40,14 +42,37 @@ public class Memory {
 		return 0; //temp
 	}
 	
+	public static void a() {
+		System.out.println("a was run");
+	}
+	
+	public static void b() {
+		System.out.println("b was run");
+	}
+	
+	public static void c() {
+		System.out.println("c was run");
+	}
+	
 	public static void main(String[] args) {
 		Memory RAM = new Memory(10);
-		System.out.println("test");
 		System.out.println(RAM.getMemArray());
 		RAM.writeMemory(2, "hi");
 		System.out.println(RAM.getMemArray());
 		RAM.writeMemory(3, "yo");
 		System.out.println(RAM.getMemArray());
 		System.out.println(RAM.readMemory(2, 3));
+		
+		String methodName = "b";
+		java.lang.reflect.Method method = null;
+		try {
+			method = RAM.getClass().getMethod(methodName);
+		} catch (SecurityException e) {  }
+		  catch (NoSuchMethodException e) {  }
+		try {
+			method.invoke(RAM);
+		} catch (IllegalArgumentException e) {  }
+		  catch (IllegalAccessException e) {  }
+		  catch (InvocationTargetException e) {  }
 	}
 }
