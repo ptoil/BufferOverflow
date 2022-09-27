@@ -1,21 +1,25 @@
+import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
+
 
 public
 class Memory {
 	
-	private char[] memArray;
+	private char[] memoryArray;
+	private boolean[] freeMemory;
 	private final char MEMORY_SIZE = 200;
 	
-	public Memory(int size) {
-//		memArray = new char[MEMORY_SIZE];
-		memArray = new char[size];
+	public Memory() {
+		memoryArray = new char[MEMORY_SIZE];
+		freeMemory = new boolean[MEMORY_SIZE];
 		initializeMemory();
 	}
 	
 	private void initializeMemory() {
-		for (int i = 0; i < memArray.length; i++) {
-			memArray[i] = '0';
+		for (int i = 0; i < memoryArray.length; i++) {
+			memoryArray[i] = 'j';
+			freeMemory[i] = false;
 		}
 	}
 	
@@ -23,56 +27,50 @@ class Memory {
 //		return Arrays.copyOfRange(memArray, address, address+size);
 		char[] a = new char[size];
 		for (int i = 0; i < size; i++) {
-			a[i] = memArray[address + i];
+			a[i] = memoryArray[address + i];
 		}
 		return a;
 	}
 	
-	public char[] getMemArray() {
-		return memArray;
-	}
-	
 	public void writeMemory(int address, String buffer) {
 		for (int i = 0; i < buffer.length(); i++) {
-			memArray[address + i] = buffer.charAt(i);
+			memoryArray[address + i] = buffer.charAt(i);
 		}
 	}
 	
-	public int getIndex(String buffer) {
-		return 0; //temp
-	}
-	
-	public static void a() {
-		System.out.println("a was run");
-	}
-	
-	public static void b() {
-		System.out.println("b was run");
-	}
-	
-	public static void c() {
-		System.out.println("c was run");
-	}
-	
-	public static void main(String[] args) {
-		Memory RAM = new Memory(10);
-		System.out.println(RAM.getMemArray());
-		RAM.writeMemory(2, "hi");
-		System.out.println(RAM.getMemArray());
-		RAM.writeMemory(3, "yo");
-		System.out.println(RAM.getMemArray());
-		System.out.println(RAM.readMemory(2, 3));
-		
-		String methodName = "b";
-		java.lang.reflect.Method method = null;
+	public int interpret(int address) {
+		Library lib = new Library(this);
+		Method method = null;
 		try {
-			method = RAM.getClass().getMethod(methodName);
+			method = lib.getClass().getMethod(Character.toString(memoryArray[address]), int.class);
 		} catch (SecurityException e) {  }
 		  catch (NoSuchMethodException e) {  }
 		try {
-			method.invoke(RAM);
+			return (int) method.invoke(lib, address);
 		} catch (IllegalArgumentException e) {  }
 		  catch (IllegalAccessException e) {  }
 		  catch (InvocationTargetException e) {  }
+		return -1; //default
+	}
+	
+	public void runMemory() {
+		int currentAddress = 0;
+		while (currentAddress < MEMORY_SIZE) {
+			currentAddress = interpret(currentAddress);
+		}
+		
+	}
+	
+	public char[] getMemArray() {
+		return memoryArray;
+	}
+	
+	public static void main(String[] args) {
+		Memory RAM = new Memory();
+		RAM.writeMemory(20, "p2hi");
+		RAM.writeMemory(30, "p6waltuh");
+//		RAM.interpret(20);
+//		RAM.interpret(30);
+		RAM.runMemory();
 	}
 }
