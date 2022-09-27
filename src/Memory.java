@@ -47,15 +47,18 @@ class Memory {
 		  catch (NoSuchMethodException e) {  }
 		try {
 			return (int) method.invoke(lib, address);
-		} catch (IllegalArgumentException e) {  }
+		} catch (NullPointerException e) { //if method is null, then there is no method with the specified name
+			System.out.println("ERROR: " + memoryArray[address] + " is not a function");
+		}
+		  catch (IllegalArgumentException e) {  }
 		  catch (IllegalAccessException e) {  }
 		  catch (InvocationTargetException e) {  }
-		return -1; //default
+		return -1; //Java requires this, but it should never be run
 	}
 	
 	public void runMemory() {
 		int currentAddress = 0;
-		while (currentAddress < MEMORY_SIZE) {
+		while (currentAddress < MEMORY_SIZE && currentAddress >= 0) {
 			currentAddress = interpret(currentAddress);
 		}
 		
@@ -72,5 +75,8 @@ class Memory {
 //		RAM.interpret(20);
 //		RAM.interpret(30);
 		RAM.runMemory();
+		RAM.writeMemory(34, "p3lol");
+		RAM.runMemory();
+		
 	}
 }
