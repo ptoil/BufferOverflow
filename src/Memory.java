@@ -77,6 +77,15 @@ class Memory {
 		RAM.runMemory();
 		RAM.writeMemory(34, "p3lol");
 		RAM.runMemory();
-		
 	}
 }
+//Output:
+/*
+hi
+waltuh
+hi
+wap3lo
+ERROR: l is not a function 
+*/
+
+
