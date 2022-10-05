@@ -8,7 +8,7 @@ class Memory {
 	
 	private char[] memoryArray;
 	private boolean[] freeMemory;
-	private final char MEMORY_SIZE = 200;
+	public final char MEMORY_SIZE = 50;
 	
 	public Memory() {
 		memoryArray = new char[MEMORY_SIZE];
