@@ -1,3 +1,4 @@
+//package seniorProject;
 
 public class Library {
 
@@ -17,7 +18,7 @@ public class Library {
 		System.out.println(output);
 		return address + 2 + length; //return address after p and the characters that are printed //2 is to include 'p' and the length digit
 	}
-	
+		
 	public int e (int address) { //empty data, dont jump anywhere
 		return -1;
 	}
@@ -25,4 +26,7 @@ public class Library {
 	public int j (int address) { //jump to next address
 		return address + 1;
 	}
+	
+	
+	
 }

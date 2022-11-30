@@ -1,14 +1,17 @@
-import java.lang.reflect.Method;
+//package seniorProject;
+
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
+import java.lang.reflect.Method;
 
 
+@SuppressWarnings("unused")
 public
 class Memory {
 	
 	private char[] memoryArray;
 	private boolean[] freeMemory;
 	public final char MEMORY_SIZE = 50;
+	public static int SSP = 50;
 	
 	public Memory() {
 		memoryArray = new char[MEMORY_SIZE];
@@ -19,7 +22,7 @@ class Memory {
 	private void initializeMemory() {
 		for (int i = 0; i < memoryArray.length; i++) {
 			memoryArray[i] = 'j';
-			freeMemory[i] = false;
+			freeMemory[i] = true;
 		}
 	}
 	
@@ -32,11 +35,23 @@ class Memory {
 		return a;
 	}
 	
-	public void writeMemory(int address, String buffer) {
-		for (int i = 0; i < buffer.length(); i++) {
-			memoryArray[address + i] = buffer.charAt(i);
+	public void writeMemory(String word, int wSize, String intention) {
+		int empt = findEmpty(this);
+		word = intention + wSize + word;
+		if (empt != -1) {
+			if (word.length() > wSize+2) {
+				System.out.println("We've entered grounds of fucking things up");
+			}
+		for (int i = 0; i < wSize+2; i++) {
+			memoryArray[empt + i] = word.charAt(i);
+			freeMemory[empt + i] = false;
 		}
+		/*
+		memoryArray[wSize+2] = (char) findEmpty(this);
+		freeMemory[wSize+2] = false;
+		*/
 	}
+}
 	
 	public int interpret(int address) {
 		Library lib = new Library(this);
@@ -64,9 +79,67 @@ class Memory {
 		
 	}
 	
+	public int emptyPointer() {
+		for (int i = 0; i < MEMORY_SIZE; i++) {
+			System.out.println(i);
+			System.out.println(freeMemory[i]);
+			if (freeMemory[i] == true) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
 	public char[] getMemArray() {
 		return memoryArray;
 	}
 	
-
+	public int findEmpty(Memory fuck) {
+		int check = fuck.emptyPointer();
+		return check;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	public void push(String input){ // char for the sake of memory being in characters
+		Memory.SSP = Memory.SSP - 5;    // pushing such that the top 5 addresses are now occupied
+		   char[] toBePushed = input.toCharArray();
+		   int tempSSP = Memory.SSP;
+		   	for (int i  = 0 ; i<input.length() ; i++){
+		   		memoryArray[tempSSP] = toBePushed[i];
+		   		freeMemory[tempSSP] = false;
+		   		tempSSP++;
+		   	}
+		   	
+		   	// return is to be the first thing pushed so that we can FUCKING OVERRIDE IT WITH OUR AWESOME OVERFLOWS
+		   	
+		   }
+		
+	public void pop(){
+		   	Memory.SSP = Memory.SSP + 5;
+		   }
+	
+		@SuppressWarnings("null")
+	public char[] RETURNPOP(int target){
+		   	char[] HERE = new char[5];
+		   	int tempSSP = target; // Memory.SSP;
+		   	for (int i  = 0 ; i<5 ; i++){
+		   		HERE[i] = memoryArray[tempSSP];
+		   		System.out.println(memoryArray[tempSSP]);
+		   		freeMemory[tempSSP] = true;
+		   		tempSSP++;
+		   	}
+		   	Memory.SSP = Memory.SSP + 5;
+		   	return HERE;
+		   }		
 }
+
+
+
+
+
+// Next Steps: Randomize where the return address lies.
