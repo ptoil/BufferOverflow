@@ -1,4 +1,4 @@
-//package seniorProject;
+package seniorProject;
 
 public class Library {
 
@@ -12,11 +12,10 @@ public class Library {
 	 * and return the next memory address to run.
 	 */
 	public int p (int address) {
-		char len = RAM.readMemory(address+1, 1)[0]; //next value after p is how many characters to print
-		int length = Character.getNumericValue(len);
-		char[] output = RAM.readMemory(address+2, length); //get characters to print from memory
+		//char len = RAM.readMemory(address+1, 6)[0]; //next value after p is how many characters to print
+		char[] output = RAM.readMemory(address+1, 6); //get characters to print from memory
 		System.out.println(output);
-		return address + 2 + length; //return address after p and the characters that are printed //2 is to include 'p' and the length digit
+		return address + 7; //return address after p and the characters that are printed //2 is to include 'p' and the length digit
 	}
 		
 	public int e (int address) { //empty data, dont jump anywhere

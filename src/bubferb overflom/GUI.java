@@ -1,3 +1,5 @@
+package seniorProject;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,8 +10,7 @@ public class GUI {
 	public GUI (Memory r) {
 		RAM = r;
 	}
-	
-	 
+
 		public void display() {
 			JFrame frame = new JFrame("Memory");
 			frame.setLayout(new GridLayout(10, 20));
@@ -34,6 +35,9 @@ public class GUI {
 			frame.setSize(1200, 700);
 			frame.setVisible(true);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			
+			
 		}
 		
 	}

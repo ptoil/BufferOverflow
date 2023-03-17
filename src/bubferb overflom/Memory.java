@@ -1,4 +1,4 @@
-//package seniorProject;
+package seniorProject;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -27,7 +27,6 @@ class Memory {
 	}
 	
 	public char[] readMemory(int address, int size) {
-//		return Arrays.copyOfRange(memArray, address, address+size);
 		char[] a = new char[size];
 		for (int i = 0; i < size; i++) {
 			a[i] = memoryArray[address + i];
@@ -35,23 +34,28 @@ class Memory {
 		return a;
 	}
 	
-	public void writeMemory(String word, int wSize, String intention) {
+	public void writeMemory(String word, String intention) {
 		int empt = findEmpty(this);
-		word = intention + wSize + word;
+		word = intention + word; // Should be equal to or less than 7 for full effect. 3 spaces will be reserved in Call Stack (At the end of memory)
+								 // To denote the return address.
 		if (empt != -1) {
-			if (word.length() > wSize+2) {
+			if (word.length() > 7) {
 				System.out.println("We've entered grounds of fucking things up");
 			}
-		for (int i = 0; i < wSize+2; i++) {
+		for (int i = 0; i < 7; i++) {
 			memoryArray[empt + i] = word.charAt(i);
 			freeMemory[empt + i] = false;
 		}
-		/*
-		memoryArray[wSize+2] = (char) findEmpty(this);
-		freeMemory[wSize+2] = false;
-		*/
 	}
 }
+	
+	public void writeMemory(String word) {
+		int empt = findEmpty(this);
+		for (int i = 0; i < word.length(); i++) {
+			memoryArray[empt + i] = word.charAt(i);
+			freeMemory[empt + i] = false;
+		}
+	}
 	
 	public int interpret(int address) {
 		Library lib = new Library(this);
@@ -76,7 +80,6 @@ class Memory {
 		while (currentAddress < MEMORY_SIZE && currentAddress >= 0) {
 			currentAddress = interpret(currentAddress);
 		}
-		
 	}
 	
 	public int emptyPointer() {
@@ -94,18 +97,15 @@ class Memory {
 		return memoryArray;
 	}
 	
-	public int findEmpty(Memory fuck) {
-		int check = fuck.emptyPointer();
+	public int findEmpty(Memory f) {
+		int check = f.emptyPointer();
 		return check;
 	}
 	
-	///////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
-	
-	
-	
 	public void push(String input){ // char for the sake of memory being in characters
+		if (Memory.SSP == 29) {
+			throw null;
+		}
 		Memory.SSP = Memory.SSP - 5;    // pushing such that the top 5 addresses are now occupied
 		   char[] toBePushed = input.toCharArray();
 		   int tempSSP = Memory.SSP;
@@ -114,8 +114,6 @@ class Memory {
 		   		freeMemory[tempSSP] = false;
 		   		tempSSP++;
 		   	}
-		   	
-		   	// return is to be the first thing pushed so that we can FUCKING OVERRIDE IT WITH OUR AWESOME OVERFLOWS
 		   	
 		   }
 		
@@ -137,9 +135,3 @@ class Memory {
 		   	return HERE;
 		   }		
 }
-
-
-
-
-
-// Next Steps: Randomize where the return address lies.
