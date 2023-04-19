@@ -1,0 +1,366 @@
+<html>
+<head>
+	<style>
+		table {
+			height: 100%;
+			width: 80%;
+			table-layout: fixed;
+			float: left;
+		}
+		table, tr, td {
+			color: black;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		.out {
+			position: relative;
+			height: 100%;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+  			align-content: center;
+  			flex-direction: column;
+		}
+		.in {
+			position: relative;
+			height: parent;
+			width: parent;
+			text-align: center;
+			font-size: 30px;
+			
+		}
+		.n {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+		#sidebar {
+			height: 100%;
+			width: 20%;
+			float: left;
+		}
+		#flags {
+			
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>
+				<div class="out">
+					<div class="in" id="c0"></div>
+					<div class="n">0</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c1"></div>
+					<div class="n">1</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c2"></div>
+					<div class="n">2</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c3"></div>
+					<div class="n">3</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c4"></div>
+					<div class="n">4</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c5"></div>
+					<div class="n">5</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c6"></div>
+					<div class="n">6</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c7"></div>
+					<div class="n">7</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c8"></div>
+					<div class="n">8</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c9"></div>
+					<div class="n">9</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="out">
+					<div class="in" id="c10"></div>
+					<div class="n">10</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c11"></div>
+					<div class="n">11</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c12"></div>
+					<div class="n">12</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c13"></div>
+					<div class="n">13</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c14"></div>
+					<div class="n">14</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c15"></div>
+					<div class="n">15</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c16"></div>
+					<div class="n">16</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c17"></div>
+					<div class="n">17</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c18"></div>
+					<div class="n">18</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c19"></div>
+					<div class="n">19</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="out">
+					<div class="in" id="c20"></div>
+					<div class="n">20</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c21"></div>
+					<div class="n">21</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c22"></div>
+					<div class="n">22</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c23"></div>
+					<div class="n">23</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c24"></div>
+					<div class="n">24</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c25"></div>
+					<div class="n">25</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c26"></div>
+					<div class="n">26</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c27"></div>
+					<div class="n">27</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c28"></div>
+					<div class="n">28</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c29"></div>
+					<div class="n">29</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="out">
+					<div class="in" id="c30"></div>
+					<div class="n">30</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c31"></div>
+					<div class="n">31</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c32"></div>
+					<div class="n">32</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c33"></div>
+					<div class="n">33</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c34"></div>
+					<div class="n">34</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c35"></div>
+					<div class="n">35</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c36"></div>
+					<div class="n">36</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c37"></div>
+					<div class="n">37</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c38"></div>
+					<div class="n">38</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c39"></div>
+					<div class="n">39</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div class="out">
+					<div class="in" id="c40"></div>
+					<div class="n">40</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c41"></div>
+					<div class="n">41</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c42"></div>
+					<div class="n">42</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c43"></div>
+					<div class="n">43</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c44"></div>
+					<div class="n">44</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c45"></div>
+					<div class="n">45</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c46"></div>
+					<div class="n">46</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c47"></div>
+					<div class="n">47</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c48"></div>
+					<div class="n">48</div>
+				</div>
+			</td>
+			<td>
+				<div class="out">
+					<div class="in" id="c49"></div>
+					<div class="n">49</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div id="sidebar">
+		<div id="flags">
+				
+		</div>
+	</div>
+</body>
+</html>
